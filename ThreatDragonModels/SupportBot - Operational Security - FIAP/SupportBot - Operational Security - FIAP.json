@@ -18,10 +18,11 @@
         "placeholder": "Descrição de novo diagrama STRIDE",
         "thumbnail": "./public/content/images/thumbnail.stride.jpg",
         "version": "2.6.2",
-        "cells": []
+        "cells": [],
+        "description": "SupportBot - Data Flow Diagram"
       }
     ],
-    "diagramTop": 1,
+    "diagramTop": 3,
     "reviewer": "",
     "threatTop": 0
   }
