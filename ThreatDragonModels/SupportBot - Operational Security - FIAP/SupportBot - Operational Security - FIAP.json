@@ -551,8 +551,8 @@
                 "text": "Servidor de Email"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -649,12 +649,34 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "1ad8db42-e521-4b58-a62f-3f386524ca68",
+                  "title": "T02 — Falsificação de identidade do cliente",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Falsificação",
+                  "description": "Um atacante envia um e-mail fingindo ser um cliente legítimo. Como o SupportBot recebe mensagens de uma caixa pública e não possui um mecanismo confiável de validação da identidade do remetente, pode interpretar a solicitação como legítima e consultar informações privadas ou executar reembolsos em nome de outra pessoa.",
+                  "mitigation": "Implementar autenticação e verificação de identidade antes de consultar dados sensíveis ou realizar operações financeiras. Não confiar apenas no endereço de e-mail informado pelo remetente. Exigir confirmação por um canal autenticado para ações críticas e associar cada solicitação à identidade validada do cliente.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 6,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
@@ -671,8 +693,8 @@
                 "text": "SupportBot"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -769,12 +791,34 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "9977a71f-6533-447c-9818-c3af41aa05f8",
+                  "title": "T04 — Abuso de privilégios e reembolsos indevidos",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Elevação de privilégio",
+                  "description": "O SupportBot utiliza uma única credencial com permissões amplas, permitindo consultar dados de clientes, listar todas as contas, enviar e-mails e emitir reembolsos sem aprovação humana.\nUm atacante pode explorar essa autonomia por meio de solicitações maliciosas e induzir o agente a executar operações financeiras para as quais o solicitante não possui autorização.\nA ausência de permissões específicas por ferramenta e de controles independentes de autorização permite que solicitações não confiáveis acionem capacidades privilegiadas do sistema.",
+                  "mitigation": "Substituir a credencial ampla por credenciais específicas, com permissões mínimas para cada ferramenta. Implementar autorização no backend da API de Pagamentos, validar a identidade do cliente e verificar se o reembolso corresponde a uma transação legítima. Estabelecer limites de valores e exigir aprovação humana para operações financeiras sensíveis. Registrar todas as ações executadas pelo agente.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 7,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 1
+              }
             }
           },
           {
@@ -1441,7 +1485,8 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -1462,15 +1507,73 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": true,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": [],
+              "threats": [
+                {
+                  "id": "2c17f8ba-3865-4b44-83d7-eeb5f6b6345c",
+                  "title": "T01 — Prompt Injection por e-mail",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Adulteração",
+                  "description": "Um atacante envia um e-mail contendo instruções maliciosas. O SupportBot mistura o conteúdo recebido com suas instruções internas e pode executar ações não autorizadas.",
+                  "mitigation": "Separar dados externos de instruções confiáveis, validar ações nas ferramentas e restringir permissões.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 1,
+                  "score": ""
+                },
+                {
+                  "id": "5ddb726c-a16a-4a1d-9f3b-85a429763e27",
+                  "title": "T02-Falsificação de identidade do cliente",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Adulteração",
+                  "description": "Um atacante envia um e-mail fingindo ser um cliente legítimo. Como o SupportBot recebe mensagens de uma caixa pública e não possui um mecanismo confiável de validação da identidade do remetente, pode interpretar a solicitação como legítima e consultar informações privadas ou executar reembolsos em nome de outra pessoa.",
+                  "mitigation": "mplementar autenticação e verificação de identidade antes de consultar dados sensíveis ou realizar operações financeiras. Não confiar apenas no endereço de e-mail informado pelo remetente. Exigir confirmação por um canal autenticado para ações críticas e associar cada solicitação à identidade validada do cliente.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 2,
+                  "score": ""
+                },
+                {
+                  "id": "64a21c8e-0754-43b9-bf9e-fa8141c58b9e",
+                  "title": "T03 — Exposição de dados de clientes",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Divulgação de informações",
+                  "description": "O SupportBot possui acesso à base de dados contendo nomes, e-mails, saldos e histórico de todos os clientes. Um atacante pode utilizar mensagens maliciosas para induzir o agente a executar a ferramenta listar_contas, recuperando informações pessoais em massa e encaminhando esses dados para um destinatário externo por meio da ferramenta responder_email.",
+                  "mitigation": "Aplicar o princípio do menor privilégio e restringir o acesso aos dados de acordo com a identidade autenticada do cliente. Impedir consultas indiscriminadas à base, substituir a ferramenta listar_contas por consultas específicas e implementar autorização por registro no backend. Validar destinatários e impedir o envio de informações sensíveis para endereços não autorizados. Registrar e monitorar consultas e transferências de dados.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 3,
+                  "score": ""
+                },
+                {
+                  "id": "01611b5e-ca53-41c2-99d4-70dbf51d9dd2",
+                  "title": "T04 — Abuso de privilégios e reembolsos indevidos",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Negação de serviço",
+                  "description": "O SupportBot utiliza uma única credencial com permissões amplas, permitindo consultar dados de clientes, listar todas as contas, enviar e-mails e emitir reembolsos sem aprovação humana.\nUm atacante pode explorar essa autonomia por meio de solicitações maliciosas e induzir o agente a executar operações financeiras para as quais o solicitante não possui autorização.\nA ausência de permissões específicas por ferramenta e de controles independentes de autorização permite que solicitações não confiáveis acionem capacidades privilegiadas do sistema.",
+                  "mitigation": "Substituir a credencial ampla por credenciais específicas, com permissões mínimas para cada ferramenta. Implementar autorização no backend da API de Pagamentos, validar a identidade do cliente e verificar se o reembolso corresponde a uma transação legítima. Estabelecer limites de valores e exigir aprovação humana para operações financeiras sensíveis. Registrar todas as ações executadas pelo agente.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 4,
+                  "score": ""
+                }
+              ],
               "trustBoundaryIds": [
                 "80c0355e-6d30-49ad-9857-4056dca3a360"
-              ]
+              ],
+              "threatFrequency": {
+                "tampering": 4,
+                "informationDisclosure": 1,
+                "denialOfService": 1
+              }
             },
             "labels": [
               "Data Flow"
@@ -1501,6 +1604,6 @@
     ],
     "diagramTop": 3,
     "reviewer": "",
-    "threatTop": 0
+    "threatTop": 7
   }
 }
