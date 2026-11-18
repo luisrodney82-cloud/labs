@@ -1588,7 +1588,7 @@
             },
             "attrs": {
               "text": {
-                "text": "1. Dados privados: acesso à base PII de todos os clientes.\n2. Conteúdo não confiável: e-mails recebidos de clientes e atacantes.\n3. Capacidade de agir/exfiltrar: ferramentas de envio de e-mails e emissão de reembolsos."
+                "text": "1. Dados privados: acesso à base PII de todos os clientes.\n\n2. Conteúdo não confiável: e-mails recebidos de clientes e atacantes.\n\n3. Capacidade de agir/exfiltrar: ferramentas de envio de e-mails e emissão de reembolsos."
               }
             },
             "visible": true,
@@ -1597,7 +1597,7 @@
             "zIndex": 11,
             "data": {
               "type": "tm.Text",
-              "name": "1. Dados privados: acesso à base PII de todos os clientes.\n2. Conteúdo não confiável: e-mails recebidos de clientes e atacantes.\n3. Capacidade de agir/exfiltrar: ferramentas de envio de e-mails e emissão de reembolsos.",
+              "name": "1. Dados privados: acesso à base PII de todos os clientes.\n\n2. Conteúdo não confiável: e-mails recebidos de clientes e atacantes.\n\n3. Capacidade de agir/exfiltrar: ferramentas de envio de e-mails e emissão de reembolsos.",
               "hasOpenThreats": false
             }
           }
